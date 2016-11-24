@@ -12,9 +12,9 @@ WebViewClient和WebChormeClient用来辅助WebView
 设置编码
 <pre><code>mWebView.getSettings().setDefaultTextEncodingName("utf-8");</code></pre>
 支持js
-<pre><code>mWebView.getSettings().setJavaScriptEnabled(true);</code></pre>
+<code>mWebView.getSettings().setJavaScriptEnabled(true);</code>
 设置本地调用对象及其接口(重要知识点跟JS交互就靠他)
-<pre><code>mWebView.addJavascriptInterface(new Object(), "myObj");</code></pre>
+<code>mWebView.addJavascriptInterface(new Object(), "myObj");</code>
 加载本地网页
 <pre><code>mWebView.loadUrl("file:///android_asset/wb.html");</code></pre>
 加载网络地址
