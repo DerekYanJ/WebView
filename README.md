@@ -12,9 +12,9 @@ WebViewClient和WebChormeClient用来辅助WebView
 设置编码
 <pre><code>mWebView.getSettings().setDefaultTextEncodingName("utf-8");</code></pre>
 支持js
-<code>mWebView.getSettings().setJavaScriptEnabled(true);</code>
+<pre><code>mWebView.getSettings().setJavaScriptEnabled(true);</code></pre>
 设置本地调用对象及其接口(重要知识点跟JS交互就靠他)
-<code>mWebView.addJavascriptInterface(new Object(), "myObj");</code>
+<pre><code>mWebView.addJavascriptInterface(new Object(), "myObj");</code></pre>
 加载本地网页
 <pre><code>mWebView.loadUrl("file:///android_asset/wb.html");</code></pre>
 加载网络地址
@@ -27,22 +27,22 @@ WebViewClient和WebChormeClient用来辅助WebView
 设置WebChromeClient
 <pre><code>mWebView.setWebChromeClient(mChrome);</code></pre>
 ### WebViewClient常见方法
-* 加载资源事件 url:链接<br/>
-  public void onLoadResource(WebView view, String url)
-* 请求url开始<br/>
-  public void onPageStarted(WebView view, String url, Bitmap favicon)
-* 请求url结束<br/>
-  public void onPageFinished(WebView view, String url)
-* 请求错误信息<br/>
-  public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)  -23+<br/>
-  public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)  -23+<br/>
-  public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)  -23-
-* 打开方式（程序还是系统浏览器）<br/>
-  public boolean shouldOverrideUrlLoading
+加载资源事件 url:链接
+<pre><code>public void onLoadResource(WebView view, String url)</code></pre>
+请求url开始
+<pre><code>public void onPageStarted(WebView view, String url, Bitmap favicon)</code></pre>
+请求url结束
+<pre><code>public void onPageFinished(WebView view, String url)</code></pre>
+请求错误信息
+<pre><code>public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)  -23+
+  public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)  -23+
+  public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)  -23-</code></pre>
+打开方式（程序还是系统浏览器）
+<pre><code>public boolean shouldOverrideUrlLoading</code></pre>
 ### WebChormeClient常见方法
-* 获取网页头部icon<br/>
-  public void onReceivedIcon(WebView view, Bitmap icon)
-* 获取头部标题<br/>
-  public void onReceivedTitle(WebView view, String title)
-* 网页加载进度变化<br/>
-  public void onProgressChanged(WebView view, int newProgress)
+获取网页头部icon
+<pre><code>public void onReceivedIcon(WebView view, Bitmap icon)</code></pre>
+获取头部标题
+<pre><code>public void onReceivedTitle(WebView view, String title)</code></pre>
+网页加载进度变化
+<pre><code>public void onProgressChanged(WebView view, int newProgress)</code></pre>
