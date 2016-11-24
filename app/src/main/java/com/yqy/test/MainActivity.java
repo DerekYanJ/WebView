@@ -76,11 +76,12 @@ public class MainActivity extends Activity {
 
         /**
          * 加载资源事件
+         * 拦截 拦截 拦截！！！
          */
         @Override
         public void onLoadResource(WebView view, String url) {
             Log.e("onLoadResource",url);
-            //做一些处理 拦截请求
+            //做一些处理
             super.onLoadResource(view, url);
         }
 
@@ -156,6 +157,12 @@ public class MainActivity extends Activity {
      * WebChromeClient:辅助WebView处理Javascript的对话框，网站图标，网站title，加载进度等
      */
     WebChromeClient mChrome = new WebChromeClient(){
+
+        /**
+         * 获取头部icon
+         * @param view
+         * @param icon
+         */
         @Override
         public void onReceivedIcon(WebView view, Bitmap icon) {
             Log.e("onReceivedIcon","-");
@@ -163,6 +170,11 @@ public class MainActivity extends Activity {
             super.onReceivedIcon(view, icon);
         }
 
+        /**
+         * 获取头部标题
+         * @param view
+         * @param title
+         */
         @Override
         public void onReceivedTitle(WebView view, String title) {
             Log.e("onReceivedTitle",title);
