@@ -28,24 +28,24 @@ WebViewClient和WebChormeClient用来辅助WebView
 设置WebChromeClient
 <pre><code>mWebView.setWebChromeClient(mChrome);</code></pre>
 ###WebViewClient常见方法
-* 加载资源事件 url:链接
+* 加载资源事件 url:链接<br/>
   public void onLoadResource(WebView view, String url)
-* 请求url开始
+* 请求url开始<br/>
   public void onPageStarted(WebView view, String url, Bitmap favicon)
-* 请求url结束
+* 请求url结束<br/>
   public void onPageFinished(WebView view, String url)
-* 请求错误信息
+* 请求错误信息<br/>
   public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)  -23+
   public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)  -23+
   public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)  -23-
-* 打开方式（程序还是系统浏览器）
+* 打开方式（程序还是系统浏览器）<br/>
   public boolean shouldOverrideUrlLoading
 ###WebChormeClient常见方法
-* 获取网页头部icon
+* 获取网页头部icon<br/>
   public void onReceivedIcon(WebView view, Bitmap icon)
-* 获取头部标题
+* 获取头部标题<br/>
   public void onReceivedTitle(WebView view, String title)
-* 网页加载进度变化
+* 网页加载进度变化<br/>
   public void onProgressChanged(WebView view, int newProgress)
 <pre><code>
 /**
