@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -54,19 +55,43 @@ public class MainActivity extends Activity {
         //mWebView.addJavascriptInterface(new JavaScriptObject(this), "myObj");
 
         //加载本地网页
-        mWebView.loadUrl("file:///android_asset/wb.html");
+//        mWebView.loadUrl("file:///android_asset/wb.html");
         //加载网络地址
         mWebView.loadUrl("http://www.baidu.com");
         //加载网页格式的文本
-        String summary = "<html><body>You scored <b>192</b> points.</body></html>";
-        mWebView.loadData(summary, "text/html", null);
+//        String summary = "<html><body>You scored <b>192</b> points.</body></html>";
+//        mWebView.loadData(summary, "text/html", null);
 
         //设置WebViewClient
         mWebView.setWebViewClient(mWvClient);
 
         //设置WebChromeClient
         mWebView.setWebChromeClient(mChrome);
+        
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //清除缓存
+        mWebView.clearCache(true);
+
+        //清除访问历史记录
+        mWebView.clearHistory();
+
+        //释放WebView占用的资源
+        mWebView.destroy();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){ //拦截返回键
+            if(mWebView.canGoBack()){
+                mWebView.goBack();
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
