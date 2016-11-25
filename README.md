@@ -26,6 +26,34 @@ WebViewClient和WebChormeClient用来辅助WebView
 <pre><code>mWebView.setWebViewClient(mWvClient);</code></pre>
 设置WebChromeClient
 <pre><code>mWebView.setWebChromeClient(mChrome);</code></pre>
+清除webview资源 当activity销毁的时候
+<pre><code>
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //清除缓存
+        mWebView.clearCache(true);
+
+        //清除访问历史记录
+        mWebView.clearHistory();
+
+        //释放WebView占用的资源
+        mWebView.destroy();
+    }
+</code></pre>
+点击返回按钮如果有上一页则跳转上一页，添加返回键拦截
+<pre><code>
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){ //拦截返回键
+            if(mWebView.canGoBack()){ //是否有上一页可返回
+                mWebView.goBack();//返回到上一页
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+</code></pre>
 ***
 ## WebViewClient常见方法
 加载资源事件 url:链接
