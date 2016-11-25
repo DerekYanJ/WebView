@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 
         //设置WebChromeClient
         mWebView.setWebChromeClient(mChrome);
-        
+
     }
 
     @Override
@@ -86,8 +86,8 @@ public class MainActivity extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK){ //拦截返回键
-            if(mWebView.canGoBack()){
-                mWebView.goBack();
+            if(mWebView.canGoBack()){ //是否有上一页可返回
+                mWebView.goBack();//返回到上一页
                 return false;
             }
         }
